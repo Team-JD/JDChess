@@ -1,12 +1,22 @@
 addons:
   postgresql: 9.6
 before_script:
-  - cp config/database.yml.travis config/database.yml
-  - psql -c 'create database travis_ci_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
 dist: trusty
 language: ruby
 rvm:
-  - 2.5.3
+- 2.5.3
 script:
-  - bundle exec rails db:migrate RAILS_ENV=test
-  - bundle exec rspec
+- bundle exec rails db:migrate RAILS_ENV=test
+- bundle exec rspec
+deploy:
+  provider: heroku
+  api_key:
+    secure: kDfk0oRd+YyefPIbaSAGWM5qG8fsMsQ1r5/Gsk62zewNG7RpIrHH59cjAUdlCaz+DEc+dmbdkJ0Ku2eO3aN7sAyP4cIA+H6mHF9gbpuMKeknAUqT2uzf+6f3KKWpuPrmefSmz/ZyxiElitZ8fFVDWhGqGisKUoy6r30pQ1kNO+Jd/hVccXOe2BBSdVaBQbxfgdcz4GBRRhMRIT8e+HsGh0U9r9wN0CoJU5LEWHQ7MSCNZmyUVvBbaDciSWfSj+xxUpx6WKndmcjaiPDTBMp8MDOrMlYNgmV249BxVxKFg0cMvNWhLjImZHaxJvuKLcgFT4TrgadlF9G7fM4ZNNwFAWSuNihsjmOC4uFlT/JyKSSqQKcoFVhNe6/LC0Pw06KXMAHCwjnPscb7utwhpFh6Z6L5Jc1UfLWtETP/F4Lv7FXu5yPYPd2Fi+lLS1Kb1TmP0XVCtP/vhtN/u1YmGwkZ9Sudkq6fuW1fLdWKJnIfxovIeRyDks4Z7oS1W2YjziF3uHqzos+Rln6OOl2dYTivNTjEUqErdSicppY9TltezRoopnLwaYrEXPCSpza9fADnWi+m74eW8mFH7EaKR8BspZDBBdXh+0tzxa9aC0z2Pkoz5lEvGGlzsnjXfTS+DtLp2MTOGH4F4Sckp7xzjCsseVhsJGXJiwfIz4KZ6S/2vT4=
+  app: 'yes'
+  on:
+    repo: Team-JD/JDChess
+  run:
+    - "rake db:migrate"
+    - restart
