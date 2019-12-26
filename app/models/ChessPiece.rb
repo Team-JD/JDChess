@@ -1,0 +1,2 @@
+class ChessPiece < Piece 
+end
