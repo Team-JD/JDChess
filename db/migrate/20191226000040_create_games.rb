@@ -8,9 +8,9 @@ class CreateGames < ActiveRecord::Migration[5.2]
       t.string :status,               null: false, default: "In Progress"
       t.string :winner
       t.string :loser
-      t.string :current_turn          null: false, default: player1
-      t.timestamps :started           null: false, default: timestamps
-      t.timestamps :ended 
+      t.string :current_turn,          null: false, default: "player1"
+      t.datetime :started             
+      t.datetime :ended 
       t.timestamps
     end
   end
