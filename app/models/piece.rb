@@ -1,2 +1,4 @@
 class Piece < ApplicationRecord
+
+    
 end
