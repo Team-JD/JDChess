@@ -4,7 +4,7 @@ class GamesController < ApplicationController
   end
 
   def create
-    @pgame = current_user.game.create(game_params)
+    @game = current_user.game.create(game_params)
     if @game.valid?
         redirect_to root_path
   end

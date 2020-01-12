@@ -1,2 +1,2 @@
-class Pawn < ChessPiece  
-end
+class Pawn < ChessPiece 
+def
