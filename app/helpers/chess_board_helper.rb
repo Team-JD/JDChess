@@ -4,8 +4,10 @@ module ChessBoardHelper
       return true
     else
       return false
+    end
+  end
 
       def piece_present
-        
+        end
 
 end

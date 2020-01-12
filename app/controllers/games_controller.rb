@@ -7,6 +7,7 @@ class GamesController < ApplicationController
     @game = current_user.game.create(game_params)
     if @game.valid?
         redirect_to root_path
+    end
   end
 
   def show
@@ -14,5 +15,10 @@ class GamesController < ApplicationController
   end
 
   def index
+    @game = Game.first
+  end
+
+  def game_params
+    params.require(:game).permit(:email)
   end
 end
