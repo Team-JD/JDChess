@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_05_075338) do
-
+ActiveRecord::Schema.define(version: 2020_01_12_223015) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,6 +27,7 @@ ActiveRecord::Schema.define(version: 2020_01_05_075338) do
     t.datetime "ended"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
 
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2020_01_05_075338) do
     t.datetime "occurred"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "row_position"
+    t.integer "column_position"
   end
 
 

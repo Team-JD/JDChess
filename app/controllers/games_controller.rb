@@ -15,6 +15,11 @@ class GamesController < ApplicationController
   end
 
   def index
+    @game = Game.first
+  end
+
+  def game_params
+    params.require(:game).permit(:email)
   end
   private
 
