@@ -4,9 +4,8 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = current_user.game.create(game_params)
-    if @game.valid?
-        redirect_to root_path
+    @game = Game.create();
+    @game.player1 = current_user.email;
   end
 
   def show
@@ -15,4 +14,11 @@ class GamesController < ApplicationController
 
   def index
   end
+
+  private
+
+  def game_params
+    params.require(:game).permit(:player1, :player2, :status, :winner, :loser, :current_turn, :player1Color, :player2Color, :started, :ended)
+  end
+
 end
