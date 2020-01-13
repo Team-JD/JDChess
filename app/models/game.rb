@@ -11,6 +11,8 @@ class Game < ActiveRecord::Base
         column_position: 1,
         color: "W"
         )
+        puts "initialize_board #{id}"
+
     end
 
     Rook.create(game_id: id, row_position: 0, column_position: 0, color: "W")
@@ -48,9 +50,4 @@ class Game < ActiveRecord::Base
     King.create(game_id: id, row_position: 4, column_position: 7, color: "B")
   end
 
-  def render_piece (current_game, row_position, column_position)
-        game = Game.find(current_game.id)
-        piece = game.find_by(row_position: row_position, column_position: column_position)
-        piece.type
-  end
 end

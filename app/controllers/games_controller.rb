@@ -15,7 +15,11 @@ class GamesController < ApplicationController
   end
 
   def index
-    @game = Game.first
+    puts "GamesController.index()"
+    @game = Game.last
+    puts @game.inspect
+    puts @game.pieces.inspect
+    @game
   end
 
   def game_params
