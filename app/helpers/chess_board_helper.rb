@@ -1,10 +1,10 @@
 module ChessBoardHelper
-  def render_piece (current_game, row_position, column_position)
-        #game = Game.find(current_game.id)
-        piece = current_game.pieces.where(row_position: row_position, column_position: column_position).first
+  def render_piece (current_game, column_position, row_position)
+        piece = current_game.pieces.where(column_position: column_position, row_position: row_position).first
         if piece != nil
-          then return piece.type
-        else return nil
+          return "#{piece.color} #{piece.type}"
+        else 
+          return nil
         end
   end
 end

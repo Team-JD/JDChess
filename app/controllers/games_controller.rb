@@ -15,10 +15,10 @@ class GamesController < ApplicationController
   end
 
   def index
-    puts "GamesController.index()"
+    #if current_user
+      #if current_user.games.last
+    #end
     @game = Game.last
-    puts @game.inspect
-    puts @game.pieces.inspect
     @game
   end
 
