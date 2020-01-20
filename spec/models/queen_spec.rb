@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Queen, type: :model do
-    describe "#is_obstructed" do
-    it "should return true if the move is valid and no piece in its path" do
+    describe "#valid_move" do
+    it "should return true if the move is valid" do
         queen = Queen.new
         queen.location = "A1"
         allow(Piece).to receive(:where).and_call_original
