@@ -11,7 +11,7 @@ class Game < ActiveRecord::Base
         column_position: 1,
         color: "W"
         )
-        puts "initialize_board #{id}"
+        #puts "initialize_board #{id}"
 
     end
 
@@ -54,7 +54,6 @@ class Game < ActiveRecord::Base
     game = Game.find(current_game.id)
     piece = game.find_by(row_position: row_position, column_position: column_position)
     piece.type
-<<<<<<< Updated upstream
   end
     
     
@@ -94,8 +93,6 @@ class Game < ActiveRecord::Base
 
       
     return true
-=======
->>>>>>> Stashed changes
   end
     
     

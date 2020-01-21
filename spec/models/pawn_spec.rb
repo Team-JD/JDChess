@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Pawn, type: :model do
-    describe "#is_valid_move?" do
+    describe "#valid_move?" do
         it "should return false when it moves from A2 to A8" do
             game = Game.new
             pawn1 = Pawn.new
