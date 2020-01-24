@@ -1,8 +1,11 @@
 <br />
 <br />
 <% if user_signed_in? %>
-  <div id="board">
-    <div row="7" column="0" class="square white"> <%= render_piece(@game, 7, 0) %> </div>
+  <div id="board"> 
+    <div row="7" column="0" class="square white"> 
+        <%= link_to "Pieces", piece_path(:id => 1, :row => 7, :column => 0, :game_id => @game.id) %>  
+        <%= render_piece(@game, 7, 0) %> 
+    </div>
     <div row="7" column="1" class="square black"> <%= render_piece(@game, 7, 1) %> </div>
     <div row="7" column="2" class="square white"> <%= render_piece(@game, 7, 2) %> </div>
     <div row="7" column="3" class="square black"> <%= render_piece(@game, 7, 3) %> </div>
