@@ -18,8 +18,9 @@ class GamesController < ApplicationController
     #if current_user
       #if current_user.games.last
     #end
+    @game = Game.create();
     @game = Game.last
-    @game
+    
   end
 
   def game_params

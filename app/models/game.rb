@@ -2,6 +2,22 @@ class Game < ActiveRecord::Base
     has_many :users
     has_many :pieces
       after_create :initialize_board!
+    
+    Captured_table_player1 = {
+      "Pawn" => 0,
+      "Rook" => 0,      
+      "Bishop" => 0,
+      "Knight" => 0,
+      "Queen" => 0
+    }
+    Captured_table_player2 = {
+      "Pawn" => 0,
+      "Rook" => 0,      
+      "Bishop" => 0,
+      "Knight" => 0,
+      "Queen" => 0
+    }
+
   def initialize_board!
     #white
     (0..7).each do |i|
@@ -53,6 +69,8 @@ class Game < ActiveRecord::Base
   def render_piece (current_game, row_position, column_position)
     game = Game.find(current_game.id)
     piece = game.find_by(row_position: row_position, column_position: column_position)
+   
+    piece_status = Piece::INITIALIZE
     piece.type
   end
     
@@ -102,7 +120,7 @@ class Game < ActiveRecord::Base
     destination_point = Point.from_location(dest_loc)
 
     if current_point == nil || destination_point == nil
-        return false
+      raise RangeError, "Value of [#{curr_loc} or #{dest_loc}] is outside bounds of [A1] to [H8]."
     end
     
     deltaX = destination_point.x - current_point.x
@@ -118,19 +136,20 @@ class Game < ActiveRecord::Base
 
     while(current_point.x  != destination_point.x || current_point.y != destination_point.y)
         if pieces_location[0].include?("#{current_point.to_location}") 
-            return false
+            return true
         end
         current_point.x += xStep;
         current_point.y += yStep;
         
         if current_point.x.abs > 8 || current_point.x < 1|| current_point.y.abs > 8 || current_point.y < 1
-            return false
+            return true
         end
 
         
     end
 
       
-    return true
+    return false
   end
+  
 end

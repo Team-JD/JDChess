@@ -8,7 +8,7 @@ class Pawn < Piece
         pieces_status = game.pieces.map(&:piece_status)
 
 
-        if pieces_location.index(curr_loc) !=nil && pieces_status[pieces_location.index(curr_loc)] == "Inactive"
+        if pieces_location.index(curr_loc) !=nil && pieces_status[pieces_location.index(curr_loc)] == Piece::INAXTIVE
             if current_point.x == destination_point.x || current_point.y == destination_point.y
                 if destination_point.y == current_point.y + 1 && (pieces_location.index(curr_loc) !=nil && pieces_color[pieces_location.index(curr_loc)] == "B")|| destination_point.y == current_point.y - 1 && (pieces_location.index(curr_loc) !=nil && pieces_color[pieces_location.index(curr_loc)] == "W")
                     return true
